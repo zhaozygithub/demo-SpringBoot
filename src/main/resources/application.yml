@@ -1,0 +1,69 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/bbs?useSSL=false
+    username: root
+    password: zhao
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    #配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    initialSize: 5
+    filters: stat,wall
+    minIdle: 5
+    maxActive: 22
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+       hibernate:
+         format_sql: true
+  mvc:
+    date-format: yyyy-MM-dd
+    # 关闭默认的图标
+    favicon:
+      enabled: false
+  messages:
+    basename: i18n.login
+  thymeleaf:
+    cache: false
+server:
+  port: 8080
+#person:
+#  lists:
+#   - user1
+#   - list2
+#  name: 张三
+#  age: 12
+#  maps:
+#   lastName: zhangsan
+#   age: 20
+#  friends:
+#   - cat
+#   - dog
+#   - bird
+#  insingle: true
+#  birth: 2017/05/25
+---
+server:
+  port: 8081
+spring:
+  profiles: prod
+
+---
+server:
+  port: 8082
+spring:
+  profiles: test
