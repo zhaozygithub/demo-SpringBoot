@@ -1,7 +1,9 @@
 package com.sprinboot.demo;
 
+import com.sprinboot.demo.dao.DeptDao;
 import com.sprinboot.demo.dao.EmpDao;
 import com.sprinboot.demo.loadProperties.PersonConf;
+import com.sprinboot.demo.model.Department;
 import com.sprinboot.demo.model.Employee;
 import com.sprinboot.demo.service.EmpService;
 import org.junit.Test;
@@ -31,10 +33,10 @@ public class DemoApplicationTests {
 
     @Test
     public void testHibernate() {
-//        List<Employee> all = empDao.findAll();
-//        for (Employee employee : all) {
-//            System.out.println(employee);
-//        }
+  /*      List<Employee> all = empDao.findAll();
+        for (Employee employee : all) {
+            System.out.println(employee);
+        }*/
         Optional<Employee> all = empDao.findById(1);
         Employee employee = all.get();
         System.out.println(employee);
@@ -43,9 +45,19 @@ public class DemoApplicationTests {
     @Autowired
     private EmpService empService;
 
+    @Autowired
+    DeptDao deptDao;
+
+    @Test
+    public void testDEpt() {
+        deptDao.save(new Department("财务部"));
+
+    }
+
+
     @Test
     public void testTransaction() {
-        //empService.save(new Department("销售部"));
+        empService.save(new Department("销售部01"));
 
     }
 

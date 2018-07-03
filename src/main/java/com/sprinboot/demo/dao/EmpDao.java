@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmpDao extends JpaRepository<Employee,Integer> {
 public Employee findEmployeeByLastName(String lastName);
+
 }

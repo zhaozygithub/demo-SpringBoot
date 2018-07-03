@@ -1,6 +1,5 @@
 package com.sprinboot.demo.conf;
 
-import com.sprinboot.demo.intecepter.LoginIntecepter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -24,7 +23,7 @@ public class WebMvcView implements WebMvcConfigurer{
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginIntecepter()).addPathPatterns("/**").excludePathPatterns("/","/index.html","/user/login","/asserts/**","/favicon.ico");
+        //registry.addInterceptor(new LoginIntecepter()).addPathPatterns("/**").excludePathPatterns("/","/index.html","/user/login","/asserts/**","/favicon.ico");
     }
 
 }
