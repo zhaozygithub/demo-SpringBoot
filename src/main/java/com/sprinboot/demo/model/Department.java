@@ -13,6 +13,7 @@ public class Department {
 
 	public Department() {
 	}
+
 	
 	public Department(String string) {
 		this.departmentName = string;
